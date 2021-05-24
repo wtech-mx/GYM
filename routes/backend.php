@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CustomersController;
 use App\Http\Controllers\Backend\PlanController;
+use App\Http\Controllers\Backend\HealthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,9 @@ Route::resource('customers', CustomersController::class);
 
 // Plan
 Route::resource('plan', PlanController::class);
+
+// Health
+Route::resource('health', HealthController::class);
 
 // Security
 Route::get('profile/security', [ProfileController::class, 'changePassword'])->name('profile.password.change');

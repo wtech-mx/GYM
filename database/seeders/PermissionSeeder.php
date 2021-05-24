@@ -164,6 +164,29 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.plan.destroy',
         ]);
 
+        // Health management
+        $moduleAppHealth = Module::updateOrCreate(['name' => 'Health Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppHealth->id,
+            'name' => 'Access Health',
+            'slug' => 'app.health.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppHealth->id,
+            'name' => 'Create Health',
+            'slug' => 'app.health.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppHealth->id,
+            'name' => 'Edit Health',
+            'slug' => 'app.health.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppHealth->id,
+            'name' => 'Delete Health',
+            'slug' => 'app.health.destroy',
+        ]);
+
         // Page management
         $moduleAppPage = Module::updateOrCreate(['name' => 'Page Management']);
         Permission::updateOrCreate([
