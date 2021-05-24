@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CustomersController;
 use App\Http\Controllers\Backend\PlanController;
 use App\Http\Controllers\Backend\HealthController;
+use App\Http\Controllers\Backend\PayController;
 use Illuminate\Support\Facades\Route;
 
 /*

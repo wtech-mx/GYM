@@ -19,7 +19,7 @@ class CreateEnrollsToTable extends Migration
             $table->unsignedBigInteger('id_user');
             $table->date('plan_date');
             $table->date('expire');
-            $table->string('renewal');
+            $table->string('renewal')->nullable();
 
             $table->foreign('id_plan')
                 ->references('id')->on('plan')

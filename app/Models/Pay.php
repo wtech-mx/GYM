@@ -54,4 +54,13 @@ class Pay extends Model
         });
     }
 
+    public function Customers()
+    {
+        return $this->belongsTo(Customers::class, 'id_user');
+    }
+
+    public function Plan()
+    {
+        return $this->belongsTo(Plan::class, 'id_plan');
+    }
 }

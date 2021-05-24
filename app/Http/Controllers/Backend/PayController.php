@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Backend;
 // use App\Http\Requests\Plan\UpdatePlanRequest;
 use App\Models\Role;
 use App\Models\Pay;
+use App\Models\Plan;
+use App\Models\Customers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -21,8 +23,10 @@ class PayController extends Controller
     public function index()
     {
         Gate::authorize('app.pay.index');
-        $pay = Plan::get();
-        return view('backend.pay.index', compact('pay'));
+        $pay = Pay::get();
+        $customers = Customers::get();
+        $plan = Plan::get();
+        return view('backend.pay.index', compact('pay', 'customers', 'plan'));
     }
 
     /**
@@ -33,8 +37,10 @@ class PayController extends Controller
     public function create()
     {
         Gate::authorize('app.pay.create');
+        $customers = Customers::get();
+        $plan = Plan::get();
 
-        return view('backend.pay.form');
+        return view('backend.pay.form', compact('plan', 'customers'));
     }
 
     /**
@@ -45,11 +51,12 @@ class PayController extends Controller
      */
     public function store(Request $request)
     {
-        $pay = Plan::create([
-            'payName' => $request->payName,
-            'description' => $request->description,
-            'validity' => $request->validity,
-            'amount' => $request->amount,
+        $pay = Pay::create([
+            'id_plan' => $request->id_plan,
+            'id_user' => $request->id_user,
+            'plan_date' => $request->plan_date,
+            'expire' => $request->expire,
+            'renewal' => $request->renewal,
         ]);
 
         notify()->success('EL pay se agrego con éxito.', 'Added');
@@ -59,57 +66,62 @@ class PayController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Plan  $pay
+     * @param  \App\Models\Pay  $pay
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $pay)
     {
-        $pay = Plan::findOrFail($pay);
+        $pay = Pay::findOrFail($pay);
+        $customers = Customers::get();
+        $plan = Plan::get();
 
-        return view('backend.pay.show', compact('pay'));
+        return view('backend.pay.show', compact('pay', 'plan', 'customers'));
     }
 
     /**
      * Muestra el formulario para editar el recurso especificado.
      *
-     * @param  \App\Models\Plan  $pay
+     * @param  \App\Models\Pay  $pay
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
     {
         Gate::authorize('app.pay.edit');
 
-        $pay = Plan::findOrFail($id);
+        $pay = Pay::findOrFail($id);
+        $customers = Customers::get();
+        $plan = Plan::get();
 
-        return view('backend.pay.form', compact('pay'));
+        return view('backend.pay.form', compact('pay', 'plan', 'customers'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Plan $pay
+     * @param Pay $pay
      * @return \Illuminate\Http\Response
      *
      */
     public function update(Request $request, $id)
     {
 
-        $pay = Plan::findOrFail($id);
+        $pay = Pay::findOrFail($id);
         $pay->update([
-            'payName' => $request->payName,
-            'description' => $request->description,
-            'validity' => $request->validity,
-            'amount' => $request->amount,
+            'id_plan' => $request->id_plan,
+            'id_user' => $request->id_user,
+            'plan_date' => $request->plan_date,
+            'expire' => $request->expire,
+            'renewal' => $request->renewal,
         ]);
 
-        notify()->success('Plan actualizado con éxito.', 'Updated');
+        notify()->success('Pay actualizado con éxito.', 'Updated');
         return redirect()->route('app.pay.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Plan $pay
+     * @param Pay $pay
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
@@ -120,14 +132,14 @@ class PayController extends Controller
 
         $idEntero = intval($id);
 
-        $pay = Plan::findOrFail($id);
+        $pay = Pay::findOrFail($id);
 
         if ($pay->deletable == true) {
             $pay->delete();
 
-            notify()->success("Plan correctamente eliminado", "Deleted");
+            notify()->success("Pay correctamente eliminado", "Deleted");
         } else {
-            notify()->error('Sorry you can\'t delete Cliente.', 'Error');
+            notify()->error('Lo sentimos no se puede eliminar el Pago.', 'Error');
         }
         return redirect()->back();
     }
