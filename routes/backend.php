@@ -39,8 +39,8 @@ Route::get('profile/', [ProfileController::class, 'index'])->name('profile.index
 Route::post('profile/', [ProfileController::class, 'update'])->name('profile.update');
 
 // Customers
-//Route::resource('customers', CustomersController::class);
-Route::resource('customers', CustomersController::class)->only(['index', 'show', 'create', 'edit', 'update', 'store', 'destroy']);
+Route::resource('customers', CustomersController::class);
+//Route::resource('customers', CustomersController::class)->only(['index', 'show', 'create', 'edit', 'update', 'store', 'destroy']);
 
 // Security
 Route::get('profile/security', [ProfileController::class, 'changePassword'])->name('profile.password.change');

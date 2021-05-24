@@ -58,23 +58,35 @@
                                     <td class="text-center">{{ $customers->email }}</td>
                                     <td class="text-center">{{ $customers->joining_date }}</td>
                                     <td class="text-center">
+
                                         <a class="btn btn-secondary btn-sm"
-                                            href="{{ route('app.customers.show', $customers->id) }}"><i
-                                                class="fas fa-eye"></i>
+                                            href="{{ route('app.customers.show', $customers->id) }}">
+                                            <i class="fas fa-eye"></i>
                                             <span>Show</span>
                                         </a>
+
                                         <a class="btn btn-info btn-sm"
-                                            href="{{ route('app.customers.edit', $customers->id) }}"><i
-                                                class="fas fa-edit"></i>
+                                            href="{{ route('app.customers.edit', $customers->id) }}">
+                                            <i class="fas fa-edit"></i>
                                             <span>Edit</span>
                                         </a>
-                                        <a type="button" class="btn btn-danger btn-sm text-white" data-toggle="modal"
-                                            data-target="#modal-{{ $customers->id }}">
-                                            <span>Eliminar</span>
-                                        </a>
+
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                                onclick="deleteData({{ $customers->id }})">
+                                            <i class="fas fa-trash-alt"></i>
+                                            <span>Delete</span>
+                                        </button>
+
+                                        <form id="delete-form-{{ $customers->id }}"
+                                              action="{{ route('app.customers.destroy',$customers->id) }}" method="POST"
+                                              style="display: none;">
+                                            @csrf()
+                                            @method('DELETE')
+                                        </form>
+
                                     </td>
                                 </tr>
-                                @include('backend.customers.destroy')
+
                             @endforeach
                         </tbody>
                     </table>

@@ -117,12 +117,24 @@ class CustomersController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Customers $id)
-    {
-        Gate::authorize('app.customers.destroy');
 
-        $id->delete();
-        notify()->success("Cliente correctamente eliminado", "Deleted");
-        return back();
+    public function destroy(Request $request, $id)
+    {
+        Gate::authorize('app.menus.destroy');
+
+        $idEntero= intval($id);
+
+        $customers = Customers::findOrFail($id);
+
+        if ($customers->deletable == true)
+        {
+            $customers->delete();
+
+            notify()->success("Cliente correctamente eliminado", "Deleted");
+        } else  {
+            notify()->error('Sorry you can\'t delete Cliente.', 'Error');
+        }
+        return redirect()->back();
     }
+
 }
