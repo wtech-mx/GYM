@@ -15,6 +15,7 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_plan');
             $table->string('username');
             $table->string('gender');
             $table->string('mobile');
@@ -25,13 +26,11 @@ class CreateCustomersTable extends Migration
             $table->string('state');
             $table->string('city');
             $table->string('zipcode');
-
-            $table->unsignedBigInteger('id_plan');
             $table->date('joining_date');
 
             $table->foreign('id_plan')
                 ->references('id')->on('plan')
-                ->inDelete('set null');
+                ->inDelete('CASCADE');
 
             $table->timestamps();
         });
