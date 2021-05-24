@@ -19,7 +19,7 @@ class CreatePlanTable extends Migration
             $table->string('description');
             $table->string('validity');
             $table->float('amount');
-            $table->string('active');
+            $table->string('active')->nullable();
             $table->timestamps();
         });
     }

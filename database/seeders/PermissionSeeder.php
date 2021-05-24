@@ -141,6 +141,29 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.customers.destroy',
         ]);
 
+        // Plan management
+        $moduleAppPlan = Module::updateOrCreate(['name' => 'Plan Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPlan->id,
+            'name' => 'Access Plan',
+            'slug' => 'app.plan.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPlan->id,
+            'name' => 'Create Plan',
+            'slug' => 'app.plan.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPlan->id,
+            'name' => 'Edit Plan',
+            'slug' => 'app.plan.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPlan->id,
+            'name' => 'Delete Plan',
+            'slug' => 'app.plan.destroy',
+        ]);
+
         // Page management
         $moduleAppPage = Module::updateOrCreate(['name' => 'Page Management']);
         Permission::updateOrCreate([

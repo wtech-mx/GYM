@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CustomersController;
+use App\Http\Controllers\Backend\PlanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,9 @@ Route::post('profile/', [ProfileController::class, 'update'])->name('profile.upd
 // Customers
 Route::resource('customers', CustomersController::class);
 //Route::resource('customers', CustomersController::class)->only(['index', 'show', 'create', 'edit', 'update', 'store', 'destroy']);
+
+// Plan
+Route::resource('plan', PlanController::class);
 
 // Security
 Route::get('profile/security', [ProfileController::class, 'changePassword'])->name('profile.password.change');
