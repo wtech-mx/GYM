@@ -7,20 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 
-class Plan extends Model
+class Pay extends Model
 {
     use HasFactory;
     use Notifiable;
 
-    protected $table = "plan";
+    protected $table = "enrolls_to";
     protected $primarykey = "id";
     public $timestamps = false;
 
     protected $fillable = [
-        'planName',
-        'description',
-        'validity',
-        'amount',
+        'id_plan',
+        'id_user',
+        'plan_date',
+        'expire',
+        'renewal',
     ];
 
     /**
@@ -52,4 +53,5 @@ class Plan extends Model
             self::flushCache();
         });
     }
+
 }

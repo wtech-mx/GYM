@@ -47,6 +47,9 @@ Route::resource('customers', CustomersController::class);
 // Plan
 Route::resource('plan', PlanController::class);
 
+// Pay
+Route::resource('pay', PayController::class);
+
 // Health
 Route::resource('health', HealthController::class);
 
