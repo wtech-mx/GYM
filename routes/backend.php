@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\CustomersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,10 @@ Route::delete('backups', [BackupController::class, 'clean'])->name('backups.clea
 // Profile
 Route::get('profile/', [ProfileController::class, 'index'])->name('profile.index');
 Route::post('profile/', [ProfileController::class, 'update'])->name('profile.update');
+
+// Customers
+//Route::resource('customers', CustomersController::class);
+Route::resource('customers', CustomersController::class)->only(['index', 'show', 'create', 'edit', 'update', 'store', 'destroy']);
 
 // Security
 Route::get('profile/security', [ProfileController::class, 'changePassword'])->name('profile.password.change');
@@ -72,5 +77,4 @@ Route::group(['as' => 'settings.', 'prefix' => 'settings'], function () {
 
     Route::get('socialite', [SettingController::class, 'socialite'])->name('socialite.index');
     Route::patch('socialite', [SettingController::class, 'updateSocialiteSettings'])->name('socialite.update');
-
 });

@@ -20,7 +20,7 @@
                 <div class="widget-content-outer">
                     <div class="widget-content-wrapper">
                         <div class="widget-content-left">
-                            <div class="widget-heading">Total Users</div>
+                            <div class="widget-heading">Total Empleados</div>
                         </div>
                         <div class="widget-content-right">
                             <div class="widget-numbers text-success">{{ $usersCount }}</div>

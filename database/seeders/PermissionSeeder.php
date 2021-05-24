@@ -118,6 +118,29 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.users.destroy',
         ]);
 
+        // Customers management
+        $moduleAppCustomers = Module::updateOrCreate(['name' => 'Customers Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCustomers->id,
+            'name' => 'Access Customers',
+            'slug' => 'app.customers.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCustomers->id,
+            'name' => 'Create Customers',
+            'slug' => 'app.customers.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCustomers->id,
+            'name' => 'Edit Customers',
+            'slug' => 'app.customers.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCustomers->id,
+            'name' => 'Delete Customers',
+            'slug' => 'app.customers.destroy',
+        ]);
+
         // Page management
         $moduleAppPage = Module::updateOrCreate(['name' => 'Page Management']);
         Permission::updateOrCreate([

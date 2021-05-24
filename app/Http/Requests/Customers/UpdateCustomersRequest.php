@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Users;
+namespace App\Http\Requests\Customers;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
@@ -14,7 +14,7 @@ class UpdateCustomersRequest extends FormRequest
      */
     public function authorize()
     {
-        Gate::authorize('app.users.edit');
+        Gate::authorize('app.customers.edit');
         return true;
     }
 
@@ -29,9 +29,9 @@ class UpdateCustomersRequest extends FormRequest
             'username' => ['required', 'string', 'max:191'],
             'gender' => ['string'],
             'mobile' => ['string'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:customers,email,'],
+            'email' => ['required', 'string', 'email', 'max:191'],
             'date_birth',
-            'joining_date' => ['required'],
+            'joining_date',
         ];
     }
 }

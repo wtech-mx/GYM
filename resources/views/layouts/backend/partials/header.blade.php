@@ -66,9 +66,9 @@
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true"
                                      class="dropdown-menu dropdown-menu-right">
-                                    <a tabindex="0" class="dropdown-item" href="{{ route('app.profile.index') }}">Profile</a>
-                                    <a tabindex="0" class="dropdown-item" href="{{ route('app.profile.password.change') }}">Change Password</a>
-                                    <a tabindex="0" class="dropdown-item" href="{{ route('app.settings.index') }}">Settings</a>
+                                    <a tabindex="0" class="dropdown-item" href="{{ route('app.profile.index') }}">Perfil</a>
+                                    <a tabindex="0" class="dropdown-item" href="{{ route('app.profile.password.change') }}">Cambiar la contraseña</a>
+                                    <a tabindex="0" class="dropdown-item" href="{{ route('app.settings.index') }}">Ajustes</a>
                                     <div tabindex="-1" class="dropdown-divider"></div>
                                     <button type="button" tabindex="0" class="dropdown-item" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">{{ __('Logout') }}</button>

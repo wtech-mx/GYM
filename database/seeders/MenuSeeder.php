@@ -22,12 +22,15 @@ class MenuSeeder extends Seeder
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 3, 'title' => 'Pages', 'url' => "/app/pages", 'icon_class' => 'pe-7s-news-paper']);
 
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 4, 'divider_title' => 'Access Control']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item','parent_id' => null, 'order' => 5, 'title' => 'Roles', 'url' => "/app/roles", 'icon_class' => 'pe-7s-check']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 5, 'title' => 'Roles', 'url' => "/app/roles", 'icon_class' => 'pe-7s-check']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 6, 'title' => 'Users', 'url' => "/app/users", 'icon_class' => 'pe-7s-users']);
 
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 7, 'divider_title' => 'System']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 8, 'title' => 'Menus', 'url' => "/app/menus", 'icon_class' => 'pe-7s-menu']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 9, 'title' => 'Backups', 'url' => "/app/backups", 'icon_class' => 'pe-7s-cloud']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 10, 'title' => 'Settings', 'url' => "/app/settings/general", 'icon_class' => 'pe-7s-settings']);
+
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 11, 'divider_title' => 'Clientes']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 12, 'title' => 'Cleinte', 'url' => "/app/customers", 'icon_class' => 'pe-7s-users']);
     }
 }

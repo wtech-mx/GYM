@@ -15,14 +15,14 @@ class User extends Authenticatable implements HasMedia
     use Notifiable, InteractsWithMedia;
 
     /**
-     * The attributes that aren't mass assignable.
+     * Los atributos que no son asignables en masa.
      *
      * @var array
      */
     protected $guarded = ['id'];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Los atributos que deben estar ocultos para las matrices.
      *
      * @var array
      */
@@ -31,7 +31,7 @@ class User extends Authenticatable implements HasMedia
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * los Atributos Que Deben Ser Arrojados A Los Tipos Nativos
      *
      * @var array
      */
@@ -39,12 +39,12 @@ class User extends Authenticatable implements HasMedia
         'email_verified_at' => 'datetime',
     ];
 
-    public function registerMediaCollections() : void
+    public function registerMediaCollections(): void
     {
         $this->addMediaCollection('avatar')
             ->singleFile()
-            ->useFallbackUrl(config('app.placeholder').'160.png')
-            ->useFallbackPath(config('app.placeholder').'160.png')
+            ->useFallbackUrl(config('app.placeholder') . '160.png')
+            ->useFallbackPath(config('app.placeholder') . '160.png')
             ->registerMediaConversions(function (Media $media) {
                 $this
                     ->addMediaConversion('thumb')
@@ -60,13 +60,13 @@ class User extends Authenticatable implements HasMedia
      */
     public static function getAllUsers()
     {
-        return Cache::rememberForever('users.all', function() {
+        return Cache::rememberForever('users.all', function () {
             return self::with('role')->latest('id')->get();
         });
     }
 
     /**
-     * Flush the cache
+     * Enjuagar el caché
      */
     public static function flushCache()
     {
@@ -74,7 +74,7 @@ class User extends Authenticatable implements HasMedia
     }
 
     /**
-     * The "booting" method of the model.
+     * El método de "arranque" del modelo.
      *
      * @return void
      */
@@ -86,11 +86,11 @@ class User extends Authenticatable implements HasMedia
             self::flushCache();
         });
 
-        static::created(function() {
+        static::created(function () {
             self::flushCache();
         });
 
-        static::deleted(function() {
+        static::deleted(function () {
             self::flushCache();
         });
     }
