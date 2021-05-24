@@ -21,6 +21,10 @@ class Customers extends Model
         'gender',
         'mobile',
         'email',
+        'streetName',
+        'state',
+        'city',
+        'zipcode',
         'date_birth',
         'joining_date',
     ];

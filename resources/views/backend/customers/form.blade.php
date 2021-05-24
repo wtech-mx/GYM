@@ -52,6 +52,18 @@
                                 <x-forms.textbox type="email" label="Email" name="email"
                                     value="{{ $customers->email ?? '' }}" />
 
+                                <x-forms.textbox type="streetName" label="Calle" name="streetName"
+                                    value="{{ $customers->streetName ?? '' }}" />
+
+                                <x-forms.textbox type="state" label="Estado/Municpio" name="state"
+                                    value="{{ $customers->state ?? '' }}" />
+
+                                <x-forms.textbox type="city" label="Ciudad/Delegacion" name="city"
+                                    value="{{ $customers->city ?? '' }}" />
+
+                                <x-forms.textbox type="zipcode" label="CP" name="zipcode"
+                                    value="{{ $customers->zipcode ?? '' }}" />
+
                                 <x-forms.textbox type="date" label="Fecha en que se unio" name="joining_date"
                                     value="{{ $customers->joining_date ?? '' }}" />
 

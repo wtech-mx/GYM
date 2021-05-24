@@ -58,6 +58,26 @@
                             </tr>
 
                             <tr>
+                                <th scope="row">Calle:</th>
+                                <td>{{ $customers->streetName }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Estado/Municpio:</th>
+                                <td>{{ $customers->state }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Ciudad/Delegacion:</th>
+                                <td>{{ $customers->city }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">CP:</th>
+                                <td>{{ $customers->zipcode }}</td>
+                            </tr>
+
+                            <tr>
                                 <th scope="row">Se unió:</th>
 
                                 <td>{{ $customers->joining_date }}</td>

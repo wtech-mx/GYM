@@ -51,6 +51,10 @@ class CustomersController extends Controller
             'gender' => $request->gender,
             'mobile' => $request->mobile,
             'email' => $request->email,
+            'streetName' => $request->streetName,
+            'state' => $request->state,
+            'city' => $request->city,
+            'zipcode' => $request->zipcode,
             'date_birth' => $request->date_birth,
             'joining_date' => $request->joining_date,
         ]);
@@ -105,6 +109,10 @@ class CustomersController extends Controller
             'gender' => $request->gender,
             'mobile' => $request->mobile,
             'email' => $request->email,
+            'streetName' => $request->streetName,
+            'state' => $request->state,
+            'city' => $request->city,
+            'zipcode' => $request->zipcode,
             'date_birth' => $request->date_birth,
             'joining_date' => $request->joining_date,
         ]);

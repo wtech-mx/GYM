@@ -20,6 +20,12 @@ class CreateCustomersTable extends Migration
             $table->string('mobile');
             $table->string('email')->unique();
             $table->date('date_birth');
+
+            $table->string('streetName');
+            $table->string('state');
+            $table->string('city');
+            $table->string('zipcode');
+
             $table->date('joining_date');
             $table->timestamps();
         });
