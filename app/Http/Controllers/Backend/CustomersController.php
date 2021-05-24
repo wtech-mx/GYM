@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Customers\StoreCustomersRequest;
 use App\Http\Requests\Customers\UpdateCustomersRequest;
-use App\Models\Role;
+
 use App\Models\Customers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Hash;
+
 
 class CustomersController extends Controller
 {
@@ -65,10 +65,13 @@ class CustomersController extends Controller
      * @param  \App\Models\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function show(Customers $customers)
+    public function show(Request $request, $customers)
     {
+        $customers = Customers::findOrFail($customers);
+
         return view('backend.customers.show', compact('customers'));
     }
+
 
     /**
      * Muestra el formulario para editar el recurso especificado.

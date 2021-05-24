@@ -59,11 +59,12 @@
 
                             <tr>
                                 <th scope="row">Se unió:</th>
-                                <td>{{ $customers->joining_date->diffForHumans() }}</td>
+
+                                <td>{{ $customers->joining_date }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Fecha Nacimiento:</th>
-                                <td>{{ $customers->date_birth->diffForHumans() }}</td>
+                                <td>{{ $customers->date_birth }}</td>
                             </tr>
                         </tbody>
                     </table>

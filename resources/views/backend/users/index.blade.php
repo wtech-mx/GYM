@@ -79,19 +79,23 @@
                                     </td>
                                     <td class="text-center">{{ $user->created_at->diffForHumans() }}</td>
                                     <td class="text-center">
+
                                         <a class="btn btn-secondary btn-sm" href="{{ route('app.users.show',$user->id) }}"><i
                                                 class="fas fa-eye"></i>
                                             <span>Show</span>
                                         </a>
+
                                         <a class="btn btn-info btn-sm" href="{{ route('app.users.edit',$user->id) }}"><i
                                                 class="fas fa-edit"></i>
                                             <span>Edit</span>
                                         </a>
+
                                         <button type="button" class="btn btn-danger btn-sm"
                                                 onclick="deleteData({{ $user->id }})">
                                             <i class="fas fa-trash-alt"></i>
                                             <span>Delete</span>
                                         </button>
+
                                         <form id="delete-form-{{ $user->id }}"
                                               action="{{ route('app.users.destroy',$user->id) }}" method="POST"
                                               style="display: none;">
