@@ -210,6 +210,29 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.pages.destroy',
         ]);
 
+        // Pay management
+        $moduleAppPay = Module::updateOrCreate(['name' => 'Pay Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPay->id,
+            'name' => 'Access Pay',
+            'slug' => 'app.Pay.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPay->id,
+            'name' => 'Create Pay',
+            'slug' => 'app.Pay.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPay->id,
+            'name' => 'Edit Pay',
+            'slug' => 'app.Pay.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPay->id,
+            'name' => 'Delete Pay',
+            'slug' => 'app.Pay.destroy',
+        ]);
+
         // Menu management
         $moduleAppMenu = Module::updateOrCreate(['name' => 'Menu Management']);
         Permission::updateOrCreate([
