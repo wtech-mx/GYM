@@ -18,6 +18,7 @@ class Customers extends Model
 
     protected $fillable = [
         'username',
+        'id_plan',
         'gender',
         'mobile',
         'email',
@@ -50,13 +51,17 @@ class Customers extends Model
             self::flushCache();
         });
 
-        static::created(function() {
+        static::created(function () {
             self::flushCache();
         });
 
-        static::deleted(function() {
+        static::deleted(function () {
             self::flushCache();
         });
     }
 
+    public function Plan()
+    {
+        return $this->belongsTo(Plan::class, 'id_plan');
+    }
 }

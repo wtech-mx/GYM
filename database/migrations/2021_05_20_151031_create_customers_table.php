@@ -26,7 +26,13 @@ class CreateCustomersTable extends Migration
             $table->string('city');
             $table->string('zipcode');
 
+            $table->unsignedBigInteger('id_plan');
             $table->date('joining_date');
+
+            $table->foreign('id_plan')
+                ->references('id')->on('plan')
+                ->inDelete('set null');
+
             $table->timestamps();
         });
     }

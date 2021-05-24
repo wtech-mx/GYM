@@ -6,6 +6,7 @@ use App\Http\Requests\Customers\StoreCustomersRequest;
 use App\Http\Requests\Customers\UpdateCustomersRequest;
 
 use App\Models\Customers;
+use App\Models\Plan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -22,7 +23,8 @@ class CustomersController extends Controller
     {
         Gate::authorize('app.customers.index');
         $customers = Customers::get();
-        return view('backend.customers.index', compact('customers'));
+        $plan = Plan::get();
+        return view('backend.customers.index', compact('customers', 'plan'));
     }
 
     /**
@@ -33,8 +35,9 @@ class CustomersController extends Controller
     public function create()
     {
         Gate::authorize('app.customers.create');
+        $plan = Plan::get();
 
-        return view('backend.customers.form');
+        return view('backend.customers.form', compact('plan'));
     }
 
     /**
@@ -48,6 +51,7 @@ class CustomersController extends Controller
     {
         $customers = Customers::create([
             'username' => $request->username,
+            'id_plan' => $request->id_plan,
             'gender' => $request->gender,
             'mobile' => $request->mobile,
             'email' => $request->email,
@@ -72,8 +76,9 @@ class CustomersController extends Controller
     public function show(Request $request, $customers)
     {
         $customers = Customers::findOrFail($customers);
+        $plan = Plan::get();
 
-        return view('backend.customers.show', compact('customers'));
+        return view('backend.customers.show', compact('customers', 'plan'));
     }
 
 
@@ -88,8 +93,9 @@ class CustomersController extends Controller
         Gate::authorize('app.customers.edit');
 
         $customers = Customers::findOrFail($id);
+        $plan = Plan::get();
 
-        return view('backend.customers.form', compact('customers'));
+        return view('backend.customers.form', compact('customers', 'plan'));
     }
 
     /**
@@ -106,6 +112,7 @@ class CustomersController extends Controller
         $customers = Customers::findOrFail($id);
         $customers->update([
             'username' => $request->username,
+            'id_plan' => $request->id_plan,
             'gender' => $request->gender,
             'mobile' => $request->mobile,
             'email' => $request->email,
@@ -133,19 +140,17 @@ class CustomersController extends Controller
     {
         Gate::authorize('app.menus.destroy');
 
-        $idEntero= intval($id);
+        $idEntero = intval($id);
 
         $customers = Customers::findOrFail($id);
 
-        if ($customers->deletable == true)
-        {
+        if ($customers->deletable == true) {
             $customers->delete();
 
             notify()->success("Cliente correctamente eliminado", "Deleted");
-        } else  {
+        } else {
             notify()->error('Sorry you can\'t delete Cliente.', 'Error');
         }
         return redirect()->back();
     }
-
 }

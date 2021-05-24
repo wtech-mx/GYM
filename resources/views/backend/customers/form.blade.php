@@ -70,6 +70,13 @@
                                 <x-forms.textbox type="date" label="Fecha de nacimiento" name="date_birth"
                                     value="{{ $customers->date_birth ?? '' }}" />
 
+                                <x-forms.select label="Select Plan" name="id_plan" class="select js-example-basic-single">
+                                    @foreach ($plan as $key => $plan)
+                                        <x-forms.select-item :value="$plan->id" :label="$plan->planName"
+                                            :selected="$customers->Plan->id ?? null" />
+                                    @endforeach
+                                </x-forms.select>
+
                                 @isset($customers)
                                     <x-forms.button type="submit" label="Update" icon-class="fas fa-arrow-circle-up" />
                                 @else

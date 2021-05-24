@@ -38,6 +38,11 @@
                     <table class="table table-hover mb-0">
                         <tbody>
                             <tr>
+                                <th scope="row">Plan:</th>
+                                <td>{{ $customers->Plan->planName }}</td>
+                            </tr>
+
+                            <tr>
                                 <th scope="row">Nombre:</th>
                                 <td>{{ $customers->username }}</td>
                             </tr>
