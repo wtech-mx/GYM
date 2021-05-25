@@ -14,7 +14,6 @@ class Pay extends Model
 
     protected $table = "enrolls_to";
     protected $primarykey = "id";
-    public $timestamps = false;
 
     protected $fillable = [
         'id_plan',

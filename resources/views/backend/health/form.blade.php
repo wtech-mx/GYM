@@ -41,7 +41,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Estado de Salud Info</h5>
 
-                                <x-forms.select label="Select Role" name="id_user" class="select js-example-basic-single">
+                                <x-forms.select label="Selecciona Usuario" name="id_user" class="select js-example-basic-single">
                                     @foreach ($customers as $key => $customers)
                                         <x-forms.select-item :value="$customers->id" :label="$customers->username"
                                             :selected="$health->Customers->id ?? null" />

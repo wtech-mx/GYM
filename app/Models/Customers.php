@@ -14,7 +14,6 @@ class Customers extends Model
 
     protected $table = "customers";
     protected $primarykey = "id";
-    public $timestamps = false;
 
     protected $fillable = [
         'username',
