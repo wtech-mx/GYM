@@ -31,11 +31,13 @@ class MenuSeeder extends Seeder
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 10, 'title' => 'Settings', 'url' => "/app/settings/general", 'icon_class' => 'pe-7s-settings']);
 
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 11, 'divider_title' => 'Clientes']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 12, 'title' => 'Cliente', 'url' => "/app/customers", 'icon_class' => 'pe-7s-add-user']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 13, 'title' => 'Plan', 'url' => "/app/plan", 'icon_class' => 'pe-7s-note2']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 12, 'title' => 'Cliente', 'url' => "/app/customers", 'icon_class' => 'pe-7s-add-user']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 14, 'title' => 'Estado de Salud', 'url' => "/app/health", 'icon_class' => 'pe-7s-gym']);
         MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 15, 'title' => 'Pago', 'url' => "/app/pay", 'icon_class' => 'pe-7s-cash']);
-        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 16, 'title' => 'Rutinas', 'url' => "/app/routine", 'icon_class' => 'pe-7s-compass']);
 
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'divider', 'parent_id' => null, 'order' => 17, 'divider_title' => 'Productos']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 18, 'title' => 'Productos', 'url' => "/app/products", 'icon_class' => 'pe-7s-plugin']);
+        MenuItem::updateOrCreate(['menu_id' => $menu->id, 'type' => 'item', 'parent_id' => null, 'order' => 18, 'title' => 'Ventas', 'url' => "/app/sales", 'icon_class' => 'pe-7s-shopbag']);
     }
 }

@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\CustomersController;
 use App\Http\Controllers\Backend\PlanController;
 use App\Http\Controllers\Backend\HealthController;
 use App\Http\Controllers\Backend\PayController;
+use App\Http\Controllers\Backend\ProductsController;
+use App\Http\Controllers\Backend\SalesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +55,12 @@ Route::resource('pay', PayController::class);
 
 // Health
 Route::resource('health', HealthController::class);
+
+// Products
+Route::resource('products', ProductsController::class);
+
+// Sales
+Route::resource('sales', SalesController::class);
 
 // Security
 Route::get('profile/security', [ProfileController::class, 'changePassword'])->name('profile.password.change');

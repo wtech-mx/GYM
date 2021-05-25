@@ -233,6 +233,52 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.pay.destroy',
         ]);
 
+        // Products management
+        $moduleAppProducts = Module::updateOrCreate(['name' => 'Products Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppProducts->id,
+            'name' => 'Access Products',
+            'slug' => 'app.products.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppProducts->id,
+            'name' => 'Create Products',
+            'slug' => 'app.products.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppProducts->id,
+            'name' => 'Edit Products',
+            'slug' => 'app.products.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppProducts->id,
+            'name' => 'Delete Products',
+            'slug' => 'app.products.destroy',
+        ]);
+
+        // Sales management
+        $moduleAppSales = Module::updateOrCreate(['name' => 'Sales Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppSales->id,
+            'name' => 'Access Sales',
+            'slug' => 'app.sales.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppSales->id,
+            'name' => 'Create Sales',
+            'slug' => 'app.sales.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppSales->id,
+            'name' => 'Edit Sales',
+            'slug' => 'app.sales.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppSales->id,
+            'name' => 'Delete Sales',
+            'slug' => 'app.sales.destroy',
+        ]);
+
         // Menu management
         $moduleAppMenu = Module::updateOrCreate(['name' => 'Menu Management']);
         Permission::updateOrCreate([
